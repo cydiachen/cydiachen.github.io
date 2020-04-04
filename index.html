@@ -138,6 +138,150 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 549 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/04/546beffb.html">opencv_video_ROI</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Python-OpenCV-视频流处理之ROI的获取"><a href="#Python-OpenCV-视频流处理之ROI的获取" class="headerlink" title="Python OpenCV 视频流处理之ROI的获取"></a>Python OpenCV 视频流处理之ROI的获取</h1><h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><p>最近有接到一个案例，是要对视频进行分析检测的。但是由于现在能拿到的视频都是固定角度的，杂讯较多。要实现对视频有效的分析，需要手动先划定ROI，这里就涉及到了如何在Python中使用OpenCV对视频流进行处理，以及对ROI进行获取。</p>
+<p>这里在OpenCV工具包中，有两种获取ROI的方法，一种是对图片提取ROI的方法，采用setMouseCallback的方法自己实现ROI的框选；另一种是直接调用函数selectROI进行获取。</p>
+<p>这里首先看一下selectROIs的文档：</p>
+<p>Selects ROIs on the given image. Function creates a window and allows user to select a ROIs using mouse. Controls: use <code>space</code> or <code>enter</code> to finish current selection and start a new one, use <code>esc</code> to terminate multiple ROI selection process. </p>
+<table>
+<thead>
+<tr>
+<th>void cv::selectROIs</th>
+<th>(</th>
+<th>const String &amp;</th>
+<th><em>windowName</em>,</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td>InputArray</td>
+<td><em>img</em>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>std::vector&lt; Rect &gt; &amp;</td>
+<td><em>boundingBoxes</em>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>bool</td>
+<td><em>showCrosshair</em> = <code>true</code>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>bool</td>
+<td><em>fromCenter</em> = <code>false</code></td>
+</tr>
+<tr>
+<td></td>
+<td>)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Parameters</p>
+<p>windowNamename of the window where selection process will be shown. imgimage to select a ROI. boundingBoxesselected ROIs. showCrosshairif true crosshair of selection rectangle will be shown. fromCenterif true center of selection will match initial mouse position. In opposite case a corner of selection rectangle will correspont to the initial mouse position.</p>
+<p>The function sets it’s own mouse callback for specified window using <a href="../../d7/dfc/group__highgui.html#ga89e7806b0a616f6f1d502bd8c183ad3e">cv::setMouseCallback</a>(windowName, …). After finish of work an empty callback will be set for the used window.</p>
+</li>
+</ul>
+<p>这个函数的一个好处是直接给了一个返回值传出来，这也是我们任务需要的；</p>
+<p>通过官方文档中的设置我们也可以看出，如果我们直接调用<a href="../../d7/dfc/group__highgui.html#ga89e7806b0a616f6f1d502bd8c183ad3e">cv::setMouseCallback</a>(windowName, …)自己来实现一个ROI的获取，没有办法把BBox的参数传出来；我这里自己使用了若干种方法，尝试在setMouseCallback方法中改变整个python代码的全局变量，但是发现这个方法仿佛是异步执行的，并不是立刻执行并改变值，也有可能是我没有调用正确。所以目前建议使用cv2.selectROI方法进行ROI区域的选取。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-03T10:26:33.000Z">2020-04-03</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 119 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/03/4aba8923.html">ant-man</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="视频工具包——Ant-Man-A-tool-for-video-processing-on-Python"><a href="#视频工具包——Ant-Man-A-tool-for-video-processing-on-Python" class="headerlink" title="视频工具包——Ant Man: A tool for video processing on Python"></a>视频工具包——Ant Man: A tool for video processing on Python</h1><h2 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h2><h2 id="2-开发进度表"><a href="#2-开发进度表" class="headerlink" title="2.开发进度表"></a>2.开发进度表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">title Ant Man: A tool for video processing on Python</span><br><span class="line">dateFormat 2020-04-03</span><br><span class="line">section 视频基本IO模块</span><br><span class="line">任务1 视频读取模块               :a1,2020-04-05, 5d</span><br><span class="line">任务2 视频输出模块               :a2, after a1 , 3d</span><br><span class="line">任务3 视频保存模块               :a3, after a2 , 3d</span><br><span class="line">任务4 视频缩放模块（插值实现）     :a4,after a3 , 3d</span><br><span class="line">任务5 视频抽帧模块               :a5,after a4 , 3d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-功能测试表"><a href="#3-功能测试表" class="headerlink" title="3. 功能测试表"></a>3. 功能测试表</h2><h2 id="4-requirements"><a href="#4-requirements" class="headerlink" title="4. requirements"></a>4. requirements</h2><ol>
+<li>mutliprocess;</li>
+<li>gc</li>
+<li>Opencv-python</li>
+<li>os</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-26T14:13:55.000Z">2020-03-26</time>
                 
                 
@@ -272,7 +416,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            2
+                            4
                         </p>
                     </a>
                 </div>
@@ -296,7 +440,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            1
+                            2
                         </p>
                     </a>
                 </div>
@@ -409,7 +553,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a>
+        <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/python-tools/" style="font-size: 10px;">python-tools</a>
     </div>
 </div>
     
@@ -421,6 +565,44 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/04/546beffb.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="opencv_video_ROI">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time></div>
+                    <a href="/2020/04/04/546beffb.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">opencv_video_ROI</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/03/4aba8923.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ant-man">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T10:26:33.000Z">2020-04-03</time></div>
+                    <a href="/2020/04/03/4aba8923.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ant-man</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -470,6 +652,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -502,6 +695,13 @@
                     </a>
                 </div>
                 
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python-tools/">
+                        <span class="tag">python-tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -523,6 +723,44 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/04/546beffb.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="opencv_video_ROI">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time></div>
+                    <a href="/2020/04/04/546beffb.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">opencv_video_ROI</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/03/4aba8923.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ant-man">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T10:26:33.000Z">2020-04-03</time></div>
+                    <a href="/2020/04/03/4aba8923.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ant-man</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -574,6 +812,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2020</span>
@@ -600,6 +849,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Introduction/">
                         <span class="tag">Introduction</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/python-tools/">
+                        <span class="tag">python-tools</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

@@ -7,21 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Introduction - Cydiachen的博客</title>
+<title>opencv_video_ROI - Cydiachen的博客</title>
 
 
-    <meta name="description" content="从今天开始，本博客正式进行迁移，从原先的卡顿的博客目录迁移到最新的hexo框架下。">
+    <meta name="description" content="Python OpenCV 视频流处理之ROI的获取1、简介最近有接到一个案例，是要对视频进行分析检测的。但是由于现在能拿到的视频都是固定角度的，杂讯较多。要实现对视频有效的分析，需要手动先划定ROI，这里就涉及到了如何在Python中使用OpenCV对视频流进行处理，以及对ROI进行获取。 这里在OpenCV工具包中，有两种获取ROI的方法，一种是对图片提取ROI的方法，采用setMouseCa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Introduction">
-<meta property="og:url" content="http://yoursite.com/2020/03/26/ed318fdc.html">
+<meta property="og:title" content="opencv_video_ROI">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/546beffb.html">
 <meta property="og:site_name" content="Cydiachen的博客">
-<meta property="og:description" content="从今天开始，本博客正式进行迁移，从原先的卡顿的博客目录迁移到最新的hexo框架下。">
+<meta property="og:description" content="Python OpenCV 视频流处理之ROI的获取1、简介最近有接到一个案例，是要对视频进行分析检测的。但是由于现在能拿到的视频都是固定角度的，杂讯较多。要实现对视频有效的分析，需要手动先划定ROI，这里就涉及到了如何在Python中使用OpenCV对视频流进行处理，以及对ROI进行获取。 这里在OpenCV工具包中，有两种获取ROI的方法，一种是对图片提取ROI的方法，采用setMouseCa">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-03-26T14:13:55.000Z">
-<meta property="article:modified_time" content="2020-03-27T02:10:31.312Z">
+<meta property="article:published_time" content="2020-04-04T14:37:13.000Z">
+<meta property="article:modified_time" content="2020-04-04T15:01:10.214Z">
 <meta property="article:author" content="Cydiachen">
-<meta property="article:tag" content="Introduction">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content=" Computer Vision">
+<meta property="article:tag" content=" Machine Learning">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -81,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Introduction" height="28">
+                <img src="/images/logo.svg" alt="opencv_video_ROI" height="28">
             
             </a>
         </div>
@@ -137,13 +139,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-26T14:13:55.000Z">2020-03-26</time>
+                <time class="level-item has-text-grey" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 38 个字)
+                    4 分钟 读完 (大约 549 个字)
                 </span>
                 
                 
@@ -152,21 +154,63 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Introduction
+                opencv_video_ROI
             
         </h1>
         <div class="content">
-            <p>从今天开始，本博客正式进行迁移，从原先的卡顿的博客目录迁移到最新的hexo框架下。</p>
+            <h1 id="Python-OpenCV-视频流处理之ROI的获取"><a href="#Python-OpenCV-视频流处理之ROI的获取" class="headerlink" title="Python OpenCV 视频流处理之ROI的获取"></a>Python OpenCV 视频流处理之ROI的获取</h1><h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><p>最近有接到一个案例，是要对视频进行分析检测的。但是由于现在能拿到的视频都是固定角度的，杂讯较多。要实现对视频有效的分析，需要手动先划定ROI，这里就涉及到了如何在Python中使用OpenCV对视频流进行处理，以及对ROI进行获取。</p>
+<p>这里在OpenCV工具包中，有两种获取ROI的方法，一种是对图片提取ROI的方法，采用setMouseCallback的方法自己实现ROI的框选；另一种是直接调用函数selectROI进行获取。</p>
+<p>这里首先看一下selectROIs的文档：</p>
+<p>Selects ROIs on the given image. Function creates a window and allows user to select a ROIs using mouse. Controls: use <code>space</code> or <code>enter</code> to finish current selection and start a new one, use <code>esc</code> to terminate multiple ROI selection process. </p>
+<table>
+<thead>
+<tr>
+<th>void cv::selectROIs</th>
+<th>(</th>
+<th>const String &amp;</th>
+<th><em>windowName</em>,</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td>InputArray</td>
+<td><em>img</em>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>std::vector&lt; Rect &gt; &amp;</td>
+<td><em>boundingBoxes</em>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>bool</td>
+<td><em>showCrosshair</em> = <code>true</code>,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>bool</td>
+<td><em>fromCenter</em> = <code>false</code></td>
+</tr>
+<tr>
+<td></td>
+<td>)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Parameters</p>
+<p>windowNamename of the window where selection process will be shown. imgimage to select a ROI. boundingBoxesselected ROIs. showCrosshairif true crosshair of selection rectangle will be shown. fromCenterif true center of selection will match initial mouse position. In opposite case a corner of selection rectangle will correspont to the initial mouse position.</p>
+<p>The function sets it’s own mouse callback for specified window using <a href="../../d7/dfc/group__highgui.html#ga89e7806b0a616f6f1d502bd8c183ad3e">cv::setMouseCallback</a>(windowName, …). After finish of work an empty callback will be set for the used window.</p>
+</li>
+</ul>
+<p>这个函数的一个好处是直接给了一个返回值传出来，这也是我们任务需要的；</p>
+<p>通过官方文档中的设置我们也可以看出，如果我们直接调用<a href="../../d7/dfc/group__highgui.html#ga89e7806b0a616f6f1d502bd8c183ad3e">cv::setMouseCallback</a>(windowName, …)自己来实现一个ROI的获取，没有办法把BBox的参数传出来；我这里自己使用了若干种方法，尝试在setMouseCallback方法中改变整个python代码的全局变量，但是发现这个方法仿佛是异步执行的，并不是立刻执行并改变值，也有可能是我没有调用正确。所以目前建议使用cv2.selectROI方法进行ROI区域的选取。</p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Introduction/" rel="tag">Introduction</a>
-                </div>
-            </div>
         </div>
         
         
@@ -215,17 +259,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/03/4aba8923.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ant-man</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/26/4a17b156.html">
-                <span class="level-item">Hello World</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/03/4aba8923.html">
+                <span class="level-item">ant-man</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -740,7 +777,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Introduction" height="28">
+                    <img src="/images/logo.svg" alt="opencv_video_ROI" height="28">
                 
                 </a>
                 <p class="is-size-7">
