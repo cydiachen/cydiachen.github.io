@@ -7,23 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>about - Cydiachen的博客</title>
+<title>mmcv_intro - Cydiachen的博客</title>
 
 
-    <meta name="description" content="技术博客 深度学习、计算机视觉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+    <meta name="description" content="MMCV源码解析（一）——总体简介1. 杂记今天放假，闲来无事，自己写视频的IO无聊了，正好有些思路比较凌乱，就大概商汤科技的MMLab公开的若干代码进行学习。其实在实际的生产环境中，纯粹的mmdetection由于其内部链接复杂，各种link都存在繁琐的关联关系，因而并不适合进行实际生产环境的魔改；相比之下，mmcv这个库包则更加合理，维护了若干CV任务中关键的过程，可以用来学习。 2. 文件夹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mmcv_intro">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/9a9c4b13.html">
 <meta property="og:site_name" content="Cydiachen的博客">
-<meta property="og:description" content="技术博客 深度学习、计算机视觉">
+<meta property="og:description" content="MMCV源码解析（一）——总体简介1. 杂记今天放假，闲来无事，自己写视频的IO无聊了，正好有些思路比较凌乱，就大概商汤科技的MMLab公开的若干代码进行学习。其实在实际的生产环境中，纯粹的mmdetection由于其内部链接复杂，各种link都存在繁琐的关联关系，因而并不适合进行实际生产环境的魔改；相比之下，mmcv这个库包则更加合理，维护了若干CV任务中关键的过程，可以用来学习。 2. 文件夹">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-03-27T02:39:52.000Z">
-<meta property="article:modified_time" content="2020-03-27T02:39:52.213Z">
+<meta property="article:published_time" content="2020-04-05T10:22:15.000Z">
+<meta property="article:modified_time" content="2020-04-05T11:03:38.169Z">
 <meta property="article:author" content="Cydiachen">
-<meta property="article:tag" content="Deep Learning">
-<meta property="article:tag" content=" Computer Vision">
-<meta property="article:tag" content=" Machine Learning">
+<meta property="article:tag" content="mmcv, toolkits">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="about" height="28">
+                <img src="/images/logo.svg" alt="mmcv_intro" height="28">
             
             </a>
         </div>
@@ -103,7 +101,7 @@
                 <a class="navbar-item"
                 href="/tags">Tags</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/about">About</a>
                 
             </div>
@@ -137,13 +135,53 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-05T10:22:15.000Z">2020-04-05</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1913 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                about
+                mmcv_intro
             
         </h1>
         <div class="content">
-            
+            <h1 id="MMCV源码解析（一）——总体简介"><a href="#MMCV源码解析（一）——总体简介" class="headerlink" title="MMCV源码解析（一）——总体简介"></a>MMCV源码解析（一）——总体简介</h1><h1 id="1-杂记"><a href="#1-杂记" class="headerlink" title="1. 杂记"></a>1. 杂记</h1><p>今天放假，闲来无事，自己写视频的IO无聊了，正好有些思路比较凌乱，就大概商汤科技的MMLab公开的若干代码进行学习。其实在实际的生产环境中，纯粹的mmdetection由于其内部链接复杂，各种link都存在繁琐的关联关系，因而并不适合进行实际生产环境的魔改；相比之下，mmcv这个库包则更加合理，维护了若干CV任务中关键的过程，可以用来学习。</p>
+<h1 id="2-文件夹结构简介"><a href="#2-文件夹结构简介" class="headerlink" title="2. 文件夹结构简介"></a>2. 文件夹结构简介</h1><p>.<br>├── CONTRIBUTING.md<br>├── Dockerfile<br>├── LICENSE<br>├── MANIFEST.in<br>├── README.rst<br>├── docs<br>│   ├── Makefile<br>│   ├── <em>static<br>│   │   ├── flow_img2toimg1.png<br>│   │   ├── flow_raw_images.png<br>│   │   ├── flow_visualization.png<br>│   │   ├── flow_warp.png<br>│   │   ├── flow_warp_diff.png<br>│   │   ├── parallel_progress.gif<br>│   │   └── progress.gif<br>│   ├── api.rst<br>│   ├── cnn.md<br>│   ├── conf.py<br>│   ├── image.md<br>│   ├── index.rst<br>│   ├── io.md<br>│   ├── make.bat<br>│   ├── runner.md<br>│   ├── utils.md<br>│   ├── video.md<br>│   └── visualization.md<br>├── examples<br>│   ├── config_cifar10.py<br>│   ├── dist_train_cifar10.sh<br>│   ├── resnet_cifar.py<br>│   └── train_cifar10.py<br>├── mmcv<br>│   ├── <em>_init</em></em>.py<br>│   ├── arraymisc<br>│   │   ├── <strong>init</strong>.py<br>│   │   └── quantization.py<br>│   ├── cnn<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── alexnet.py<br>│   │   ├── resnet.py<br>│   │   ├── vgg.py<br>│   │   └── weight_init.py<br>│   ├── fileio<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── handlers<br>│   │   │   ├── <strong>init</strong>.py<br>│   │   │   ├── base.py<br>│   │   │   ├── json_handler.py<br>│   │   │   ├── pickle_handler.py<br>│   │   │   └── yaml_handler.py<br>│   │   ├── io.py<br>│   │   └── parse.py<br>│   ├── image<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── colorspace.py<br>│   │   ├── geometry.py<br>│   │   ├── io.py<br>│   │   ├── normalize.py<br>│   │   └── resize.py<br>│   ├── parallel<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── <em>functions.py<br>│   │   ├── collate.py<br>│   │   ├── data_container.py<br>│   │   ├── data_parallel.py<br>│   │   ├── distributed.py<br>│   │   ├── distributed_deprecated.py<br>│   │   └── scatter_gather.py<br>│   ├── runner<br>│   │   ├── <em>_init</em></em>.py<br>│   │   ├── checkpoint.py<br>│   │   ├── dist_utils.py<br>│   │   ├── hooks<br>│   │   │   ├── <strong>init</strong>.py<br>│   │   │   ├── checkpoint.py<br>│   │   │   ├── closure.py<br>│   │   │   ├── hook.py<br>│   │   │   ├── iter_timer.py<br>│   │   │   ├── logger<br>│   │   │   │   ├── <strong>init</strong>.py<br>│   │   │   │   ├── base.py<br>│   │   │   │   ├── pavi.py<br>│   │   │   │   ├── tensorboard.py<br>│   │   │   │   ├── text.py<br>│   │   │   │   └── wandb.py<br>│   │   │   ├── lr_updater.py<br>│   │   │   ├── memory.py<br>│   │   │   ├── optimizer.py<br>│   │   │   └── sampler_seed.py<br>│   │   ├── log_buffer.py<br>│   │   ├── parallel_test.py<br>│   │   ├── priority.py<br>│   │   ├── runner.py<br>│   │   └── utils.py<br>│   ├── utils<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── config.py<br>│   │   ├── logging.py<br>│   │   ├── misc.py<br>│   │   ├── path.py<br>│   │   ├── progressbar.py<br>│   │   ├── registry.py<br>│   │   └── timer.py<br>│   ├── version.py<br>│   ├── video<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── io.py<br>│   │   ├── optflow.py<br>│   │   ├── optflow_warp<br>│   │   │   ├── <strong>init</strong>.py<br>│   │   │   ├── flow_warp.cpp<br>│   │   │   ├── flow_warp.hpp<br>│   │   │   └── flow_warp_module.pyx<br>│   │   └── processing.py<br>│   └── visualization<br>│       ├── <strong>init</strong>.py<br>│       ├── color.py<br>│       ├── image.py<br>│       └── optflow.py<br>├── requirements.txt<br>├── setup.cfg<br>├── setup.py<br>└── tests<br>    ├── data<br>    │   ├── color.jpg<br>    │   ├── config<br>    │   │   ├── a.b.py<br>    │   │   ├── a.py<br>    │   │   ├── b.json<br>    │   │   ├── base.py<br>    │   │   ├── c.yaml<br>    │   │   ├── d.py<br>    │   │   ├── delete.py<br>    │   │   ├── e.py<br>    │   │   ├── f.py<br>    │   │   ├── l.py<br>    │   │   ├── l1.py<br>    │   │   ├── l2.yaml<br>    │   │   ├── l3.json<br>    │   │   ├── l4.py<br>    │   │   └── m.py<br>    │   ├── filelist.txt<br>    │   ├── for_scan<br>    │   │   ├── 1.json<br>    │   │   ├── 1.txt<br>    │   │   ├── 2.json<br>    │   │   ├── 2.txt<br>    │   │   ├── a.bin<br>    │   │   └── sub<br>    │   │       ├── 1.json<br>    │   │       └── 1.txt<br>    │   ├── grayscale.jpg<br>    │   ├── mapping.txt<br>    │   ├── optflow.flo<br>    │   ├── optflow_concat0.jpg<br>    │   ├── optflow_concat1.jpg<br>    │   ├── patches<br>    │   │   ├── 0.npy<br>    │   │   ├── 1.npy<br>    │   │   ├── 2.npy<br>    │   │   ├── 3.npy<br>    │   │   ├── 4.npy<br>    │   │   ├── pad0_0.npy<br>    │   │   ├── pad0_1.npy<br>    │   │   ├── pad0_2.npy<br>    │   │   ├── pad0_3.npy<br>    │   │   ├── pad0_4.npy<br>    │   │   ├── pad_0.npy<br>    │   │   ├── pad_1.npy<br>    │   │   ├── pad_2.npy<br>    │   │   ├── pad_3.npy<br>    │   │   ├── pad_4.npy<br>    │   │   ├── scale_0.npy<br>    │   │   ├── scale_1.npy<br>    │   │   ├── scale_2.npy<br>    │   │   ├── scale_3.npy<br>    │   │   └── scale_4.npy<br>    │   └── test.mp4<br>    ├── test_arraymisc.py<br>    ├── test_config.py<br>    ├── test_fileio.py<br>    ├── test_hooks.py<br>    ├── test_image.py<br>    ├── test_logging.py<br>    ├── test_misc.py<br>    ├── test_optflow.py<br>    ├── test_path.py<br>    ├── test_progressbar.py<br>    ├── test_registry.py<br>    ├── test_runner.py<br>    ├── test_timer.py<br>    ├── test_video.py<br>    ├── test_visualization.py<br>    └── test_weight_init.py</p>
+<p>主要文件夹结构看上去很复杂，但其实有不少文件，是专业的python deploy阶段才会出现的config类型文件。这里如果我们自己需要自研包，也需要进行对应的设计。</p>
+<p>其中文件夹中最主要的是mmcv这个文件夹下的内容，这一系列的博文也针对这一系列的操作进行介绍。</p>
+<p>mmcv文件夹下主要的文件目录包括：</p>
+<p>1、arraymisc</p>
+<p>这个文件夹下主要是保存了一些numpy的数组的数值操作，这些数值操作主要是用于数据的量化；主要的功能函数就两个：一个是负责对数组进行量化的quantize函数和一个对数组进行反量化的quantize函数。</p>
+<p>这里是一个现阶段部署需要使用的方法，本文会进行一个相对比较系统的介绍。</p>
+<p>2、cnn</p>
+<p>这个文件夹下保存了一些商汤复现的简单CNN网络和一些简单的初始化方法，可以作为简单的CNN网络的入门。</p>
+<p>这里不是本文的重点就不再赘述</p>
+<p>3、fileio</p>
+<p>这个文件夹下复现了若干简单的通用IO方法，比如load，dump以及json，pickle，yaml，从文件读list，从文件中读dict这些的handler。</p>
+<p>本文会介绍他们进行IO的相关具体操作，以及对应的文件格式；</p>
+<p>4、image</p>
+<p>这个是整个项目的重头戏，相当于对OpenCV进行了二次封装，暴露了最终端的API以供直接调用得到结果。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/mmcv-toolkits/" rel="tag">mmcv, toolkits</a>
+                </div>
+            </div>
         </div>
         
         
@@ -188,6 +226,20 @@
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/04/546beffb.html">
+                <span class="level-item">opencv_video_ROI</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -748,7 +800,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="about" height="28">
+                    <img src="/images/logo.svg" alt="mmcv_intro" height="28">
                 
                 </a>
                 <p class="is-size-7">
