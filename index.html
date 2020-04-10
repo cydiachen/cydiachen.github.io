@@ -138,6 +138,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 243 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/10/5e56603b.html">ReID</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近在做一个追踪竞赛，其中选取的技术方案仍然是Detection+DeepSort的结构。目前阶段，我们对于DeepSort部分进行了一个简单的技术探索，探索的结果如下：</p>
+<p>1、数据集部分</p>
+<p>常见的ReID数据集有以下两个：Mars和Market-1501</p>
+<p>关于这两个数据集的介绍，网络上有很多了，在这里不再赘述。根据我们在这两个数据集上进行简单的模型训练的结果可以发现以下结论：</p>
+<p>目前的公开数据集规模小，无法使用较大的网路进行训练。为了实际的需要，优先采用Lightweight的网络进行训练。模型规模（Param #）需要控制在7M以内。不然就很容易出现严重的过拟合现象，并且无法通过简单的数据增广进行解决。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-07T07:13:14.000Z">2020-04-07</time>
                 
                 
@@ -611,7 +657,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -635,7 +681,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -748,7 +794,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Data-Analyze/" style="font-size: 10px;">Data Analyze</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/mmcv-toolkits/" style="font-size: 10px;">mmcv, toolkits</a> <a href="/tags/python-tools/" style="font-size: 10px;">python-tools</a>
+        <a href="/tags/Data-Analyze/" style="font-size: 10px;">Data Analyze</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/ReID/" style="font-size: 10px;">ReID</a> <a href="/tags/mmcv-toolkits/" style="font-size: 10px;">mmcv, toolkits</a> <a href="/tags/python-tools/" style="font-size: 10px;">python-tools</a>
     </div>
 </div>
     
@@ -760,6 +806,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/10/5e56603b.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ReID">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time></div>
+                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ReID</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -837,25 +902,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/04/546beffb.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="opencv_video_ROI">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time></div>
-                    <a href="/2020/04/04/546beffb.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">opencv_video_ROI</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -873,7 +919,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -912,6 +958,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Introduction/">
                         <span class="tag">Introduction</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ReID/">
+                        <span class="tag">ReID</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -954,6 +1007,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/10/5e56603b.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ReID">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time></div>
+                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ReID</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/07/3f7f6b33.html" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="pandas">
@@ -1028,25 +1100,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/04/546beffb.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="opencv_video_ROI">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-04T14:37:13.000Z">2020-04-04</time></div>
-                    <a href="/2020/04/04/546beffb.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">opencv_video_ROI</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1064,7 +1117,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1103,6 +1156,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Introduction/">
                         <span class="tag">Introduction</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ReID/">
+                        <span class="tag">ReID</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

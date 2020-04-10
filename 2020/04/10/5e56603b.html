@@ -7,23 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>AOD-Net - Cydiachen的博客</title>
+<title>ReID - Cydiachen的博客</title>
 
 
-    <meta name="description" content="技术博客 深度学习、计算机视觉">
+    <meta name="description" content="最近在做一个追踪竞赛，其中选取的技术方案仍然是Detection+DeepSort的结构。目前阶段，我们对于DeepSort部分进行了一个简单的技术探索，探索的结果如下： 1、数据集部分 常见的ReID数据集有以下两个：Mars和Market-1501 关于这两个数据集的介绍，网络上有很多了，在这里不再赘述。根据我们在这两个数据集上进行简单的模型训练的结果可以发现以下结论： 目前的公开数据集规模小">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOD-Net">
-<meta property="og:url" content="http://yoursite.com/2020/04/06/4bd31a6d.html">
+<meta property="og:title" content="ReID">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/5e56603b.html">
 <meta property="og:site_name" content="Cydiachen的博客">
-<meta property="og:description" content="技术博客 深度学习、计算机视觉">
+<meta property="og:description" content="最近在做一个追踪竞赛，其中选取的技术方案仍然是Detection+DeepSort的结构。目前阶段，我们对于DeepSort部分进行了一个简单的技术探索，探索的结果如下： 1、数据集部分 常见的ReID数据集有以下两个：Mars和Market-1501 关于这两个数据集的介绍，网络上有很多了，在这里不再赘述。根据我们在这两个数据集上进行简单的模型训练的结果可以发现以下结论： 目前的公开数据集规模小">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-04-06T11:23:21.000Z">
-<meta property="article:modified_time" content="2020-04-08T01:12:39.469Z">
+<meta property="article:published_time" content="2020-04-10T08:03:07.000Z">
+<meta property="article:modified_time" content="2020-04-10T08:08:18.320Z">
 <meta property="article:author" content="Cydiachen">
-<meta property="article:tag" content="Deep Learning">
-<meta property="article:tag" content=" Computer Vision">
-<meta property="article:tag" content=" Machine Learning">
+<meta property="article:tag" content="ReID">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="AOD-Net" height="28">
+                <img src="/images/logo.svg" alt="ReID" height="28">
             
             </a>
         </div>
@@ -139,13 +137,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-06T11:23:21.000Z">2020-04-06</time>
+                <time class="level-item has-text-grey" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    2 分钟 读完 (大约 243 个字)
                 </span>
                 
                 
@@ -154,11 +152,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                AOD-Net
+                ReID
             
         </h1>
         <div class="content">
-            
+            <p>最近在做一个追踪竞赛，其中选取的技术方案仍然是Detection+DeepSort的结构。目前阶段，我们对于DeepSort部分进行了一个简单的技术探索，探索的结果如下：</p>
+<p>1、数据集部分</p>
+<p>常见的ReID数据集有以下两个：Mars和Market-1501</p>
+<p>关于这两个数据集的介绍，网络上有很多了，在这里不再赘述。根据我们在这两个数据集上进行简单的模型训练的结果可以发现以下结论：</p>
+<p>目前的公开数据集规模小，无法使用较大的网路进行训练。为了实际的需要，优先采用Lightweight的网络进行训练。模型规模（Param #）需要控制在7M以内。不然就很容易出现严重的过拟合现象，并且无法通过简单的数据增广进行解决。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ReID/" rel="tag">ReID</a>
+                </div>
+            </div>
         </div>
         
         
@@ -207,17 +219,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/07/3f7f6b33.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">pandas</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/05/45a48a6c.html">
-                <span class="level-item">mmcv_image</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/07/3f7f6b33.html">
+                <span class="level-item">pandas</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -812,7 +817,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="AOD-Net" height="28">
+                    <img src="/images/logo.svg" alt="ReID" height="28">
                 
                 </a>
                 <p class="is-size-7">
