@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>RANet-分辨率自适应网络 - Cydiachen的博客</title>
+<title>RANet:分辨率自适应网络，实现网络效率的best trade-off - Cydiachen的博客</title>
 
 
-    <meta name="description" content="RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可">
+    <meta name="description" content="​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：  这个网络在计算力受限的情况下，能够实现较优模型。 1. Introduction​">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RANet-分辨率自适应网络">
+<meta property="og:title" content="RANet:分辨率自适应网络，实现网络效率的best trade-off">
 <meta property="og:url" content="http://yoursite.com/2020/04/27/5cb48b4c.html">
 <meta property="og:site_name" content="Cydiachen的博客">
-<meta property="og:description" content="RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可">
+<meta property="og:description" content="​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：  这个网络在计算力受限的情况下，能够实现较优模型。 1. Introduction​">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-27T01:43:30.000Z">
-<meta property="article:modified_time" content="2020-04-27T02:19:09.117Z">
+<meta property="article:modified_time" content="2020-04-27T03:03:02.078Z">
 <meta property="article:author" content="Cydiachen">
 <meta property="article:tag" content="RANet, efficiency of DL">
 <meta name="twitter:card" content="summary">
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="RANet-分辨率自适应网络" height="28">
+                <img src="/images/logo.svg" alt="RANet:分辨率自适应网络，实现网络效率的best trade-off" height="28">
             
             </a>
         </div>
@@ -143,7 +143,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1034 个字)
+                    11 分钟 读完 (大约 1605 个字)
                 </span>
                 
                 
@@ -152,21 +152,30 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                RANet-分辨率自适应网络
+                RANet:分辨率自适应网络，实现网络效率的best trade-off
             
         </h1>
         <div class="content">
-            <h1 id="RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020"><a href="#RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020" class="headerlink" title="RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020"></a>RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020</h1><p>​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：</p>
+            <p>​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge83ykh88nj314y0u0gwz.jpg" alt="image-20200427094820225"></p>
 <p>这个网络在计算力受限的情况下，能够实现较优模型。</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>​        从EfficientNet这一系列的分支开始，在深度卷积网络落地的时候，计算量与性能的取舍一直是现阶段的一个研究重点。之前的网络直接从网络的宽度或者深度入手，尝试达到一个动态平衡。而这篇文章从另一个角度入手，尝试实现计算能力与网络性能的平衡。这篇文章关注于从不同分辨率、网络深度上，根据样本自身的难易程度调整适应网络。这类网络有一些贪心的思想，包含了多个不同输入分辨率和深度的子网路。网络先从最小的子网进行识别，当识别达到要求的条件，即结束，否则使用更大的子网进行识别。这里需要注意，更深的子网是由之前的小子网演化而来的，下一级的子网会融合上一级子网的特征。之前在图像超分辨率的问题中，也有人尝试过用这样的思想进行模型的设计【1】。这类自适应的网络主要需要解决的问题有两个：1、如何尽可能的实现网络的自适应处理；2、如何设定合适的阈值进行网络的切换。该文章就从这两个方面分别进行了探索。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>​        <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge84ke5meaj30u013ydso.jpg" alt="image-20200427103945343"></p>
+<p>​        从EfficientNet这一系列的分支开始，在深度卷积网络落地的时候，计算量与性能的取舍一直是现阶段的一个研究重点。之前的网络直接从网络的宽度或者深度入手，尝试达到一个动态平衡。而这篇文章从另一个角度入手，尝试实现计算能力与网络性能的平衡。这篇文章关注于从不同分辨率、网络深度上，根据样本自身的难易程度调整适应网络。这类网络有一些贪心的思想，包含了多个不同输入分辨率和深度的子网路。网络先从最小的子网进行识别，当识别达到要求的条件，即结束，否则使用更大的子网进行识别。这里需要注意，更深的子网是由之前的小子网演化而来的，下一级的子网会融合上一级子网的特征。之前在图像超分辨率的问题中，也有人尝试过用这样的思想进行模型的设计【1】。这类自适应的网络主要需要解决的问题有两个：1、如何尽可能的实现网络的自适应处理；2、如何设定合适的阈值进行网络的切换。该文章就从这两个方面分别进行了探索。</p>
 <h2 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h2><h3 id="1-自适应推理设置"><a href="#1-自适应推理设置" class="headerlink" title="1.自适应推理设置"></a>1.自适应推理设置</h3><p>​        自适应的推理设置，本身就需要有若干模型作为candidates，这里每一个分类器的输入如下：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/s1ZNq0rdQe4I0jYUUQuWPqvJ2VKYdt6iaO23fOEKs7ov9mSu900JD1GgYOIBXoibYCdsth7yJReInAaNv0gRXOqw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>​        这里K代表K个分类器，对于给定的输入图片X，第K哥分类器的输出就是公式(1)，theta为分类器对应的子网参数，部分参数是分类器间共享的，P为类别C置信度。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge84mbbxbej30v403iwer.jpg" alt="image-20200427104137232"></p>
+<p>​        这里K代表K个分类器，对于给定的输入图片X，第K个分类器的输出就是公式(1)，theta为分类器对应的子网参数，部分参数是分类器间共享的，P为类别C置信度。</p>
 <p>​        其中，自适应网络是通过每一个模型分支的预测结果的概率来进行计算分支的动态选择，也就是如果当前的分类器输出达到了预期，那么输出当前的置信度。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/s1ZNq0rdQe4I0jYUUQuWPqvJ2VKYdt6iaakp05PpXZ2JicaFy23wHbiaC76Iv0miarEViaDT9jrq9LbwLJMZXXWeCibw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge84mrqsynj30vm05wt9a.jpg" alt="image-20200427104158914"></p>
 <p>​        这里与论文【1】中的思路不相同，究其本质：图像超分辨率这种任务中，我们可以通过计算TV数值的大小来判断当前图像的复杂程度。同时TV也可以作为图像质量的自评估指标，而图像分类中并没有这样的指标。因此，在这篇文章中，直接就采用分类的类别label作为判断指标。（笔者感叹：不同任务中的评估指标还是非常重要的，设定好一个贴近业务的评价指标，在套一些简单的思想，网络效果可能就不错）</p>
-<h3 id="2-总体架构"><a href="#2-总体架构" class="headerlink" title="2. 总体架构"></a>2. 总体架构</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/s1ZNq0rdQe4I0jYUUQuWPqvJ2VKYdt6ia25b2lv4hCFVSnwdibbdtEvOFg09M035o0ZfFAibsRvIGXaw4FpFlBBUw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h3 id="2-总体架构"><a href="#2-总体架构" class="headerlink" title="2. 总体架构"></a>2. 总体架构</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge84nuozn0j31ra0lswmh.jpg" alt="image-20200427104305884"></p>
+<p>​        整体的RANet的网络架构就像上图所示，感觉和今年CVPR2020中商汤还是旷视的NAS网络有些类似。这里包含了网络的初始层Init Layer和H个对应不同分辨率的子网，每一个子网络都包含了若干分类器。图像预测的pipeline是通过初始层形成不同分辨率的特征图，然后使用最低分辨率的字网络进行预测。如果子网路的预测分类无法满足业务需求，就用下一个分辨率稍大的网络进行预测，不断重复直到获得可靠的结果或是到达最大分辨率的子网。</p>
+<p>​        在网络的重复迭代过程中，高分辨率层融合低分辩率层的特征。不同的分类子网也不断对图像进行反复的下采样，直到特征图大小变为1 scale（表示初始层最小的分辨率），分类器只apply在最后几个特征图大小：s = 1的网络模块上。</p>
+<h3 id="3-网络细节"><a href="#3-网络细节" class="headerlink" title="3. 网络细节"></a>3. 网络细节</h3><h4 id="1-初始化层"><a href="#1-初始化层" class="headerlink" title="1. 初始化层"></a>1. 初始化层</h4><p>初始化层生成了H个基础特征，同时特征有S个尺寸。图2的初始层包含了3个不同尺寸的特征。最高分辨率尺度的层的特征通过常规的卷积层产生，后面的特征层由strided-conv层产生。</p>
+<h4 id="2-有不同分辨率尺度的子网络"><a href="#2-有不同分辨率尺度的子网络" class="headerlink" title="2. 有不同分辨率尺度的子网络"></a>2. 有不同分辨率尺度的子网络</h4><p>这里有一些类似HRNet的想法，网络的自适应连接有三大类。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge84ogoq6uj30u00w7ah4.jpg" alt="image-20200427104335228"></p>
+<p>​        其中(a)类结构，就类似于传统的卷积神经网络模型，只是依次连接下来，组成了一个单分支网络。这些网络也没进行特征融合。(b)类结构，是从低分辩率尺度上获得对应的高位特征图，这里就需要进行低维特征图的上采样。(c)类结构，是在进行特征融合时，遇到了网络自行进行下采样的过程。这里就进行了混合融合。</p>
+<h3 id="4-模型性能评估"><a href="#4-模型性能评估" class="headerlink" title="4. 模型性能评估"></a>4. 模型性能评估</h3><p>​        在这类对性能敏感的模型，一般采用的性能评价指标为acc/FLOPs。 本文中模型评估，从参数量为$1\times 10^8$至$5*10^8$。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge855xiu5ij31620u01ak.jpg" alt="image-20200427110024413"></p>
 <p>【1】Mobicom2019-MobiSR:Efficient On-Device Super-Resolution through Heterogeneous Mobile Processors.</p>
 
         </div>
@@ -437,14 +446,14 @@
             
             <a href="/2020/04/27/5cb48b4c.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet-分辨率自适应网络">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet:分辨率自适应网络，实现网络效率的best trade-off">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time></div>
-                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet-分辨率自适应网络</a>
+                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet:分辨率自适应网络，实现网络效率的best trade-off</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -642,14 +651,14 @@
             
             <a href="/2020/04/27/5cb48b4c.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet-分辨率自适应网络">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet:分辨率自适应网络，实现网络效率的best trade-off">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time></div>
-                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet-分辨率自适应网络</a>
+                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet:分辨率自适应网络，实现网络效率的best trade-off</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -838,7 +847,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="RANet-分辨率自适应网络" height="28">
+                    <img src="/images/logo.svg" alt="RANet:分辨率自适应网络，实现网络效率的best trade-off" height="28">
                 
                 </a>
                 <p class="is-size-7">
