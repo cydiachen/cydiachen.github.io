@@ -138,13 +138,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time>
+                <time class="level-item has-text-grey" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 243 个字)
+                    3 分钟 读完 (大约 396 个字)
                 </span>
                 
                 
@@ -153,7 +153,94 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/04/10/5e56603b.html">ReID</a>
+                <a class="has-link-black-ter" href="/2020/04/27/5cb48b4c.html">RANet-分辨率自适应网络</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020"><a href="#RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020" class="headerlink" title="RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020"></a>RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020</h1><p>​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：</p>
+<p>![image-20200427094820225](/Users/zhangyunchen/Library/Application Support/typora-user-images/image-20200427094820225.png)</p>
+<p>这个网络在计算力受限的情况下，能够实现较优模型。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>​        从EfficientNet这一系列的分支开始，在深度卷积网络落地的时候，计算量与性能的取舍一直是现阶段的一个研究重点。之前的网络直接从网络的宽度或者深度入手，尝试达到一个动态平衡。而这篇文章从另一个角度入手，尝试实现计算能力与网络性能的平衡。这篇文章关注于从不同分辨率、网络深度上，根据样本自身的难易程度调整适应网络。这类网络有一些贪心的思想，包含了多个不同输入分辨率和深度的子网路。网络先从最小的子网进行识别，当识别达到要求的条件，即结束，否则使用更大的子网进行识别。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-21T14:24:08.000Z">2020-04-21</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 99 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/21/eb1bbd37.html">算法竞赛经典入门</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><h1 id="2-数组与字符串"><a href="#2-数组与字符串" class="headerlink" title="2. 数组与字符串"></a>2. 数组与字符串</h1><p>这一节主要介绍了常规的数组和字符串的用法，这里需要注意的是，在标准的stdio.h文件中，用来获取输入的语句需要考虑安全性。比如说最基础的scanf语句，这个语句在遇到空格、换行符时，条件会发生改变。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 347 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/10/5e56603b.html">Beyond ResNet：行人ReID任务中的不同网络性能分析</a>
             
         </h1>
         <div class="content">
@@ -162,6 +249,9 @@
 <p>常见的ReID数据集有以下两个：Mars和Market-1501</p>
 <p>关于这两个数据集的介绍，网络上有很多了，在这里不再赘述。根据我们在这两个数据集上进行简单的模型训练的结果可以发现以下结论：</p>
 <p>目前的公开数据集规模小，无法使用较大的网路进行训练。为了实际的需要，优先采用Lightweight的网络进行训练。模型规模（Param #）需要控制在7M以内。不然就很容易出现严重的过拟合现象，并且无法通过简单的数据增广进行解决。</p>
+<p>2、Backbone网络部分</p>
+<p>这里目前我们在Market-1501数据集上，进行了比较简单的模型分析及比较。</p>
+<p>经过比较发现，原始的ResNet18的确性能能够达到最佳，很特别的结论。让我百思不得其解，同样是较小的模型规模，为何ResNet18这种简单的结构就能够做的比较好呢？</p>
 
         </div>
         
@@ -558,60 +648,25 @@
 
 
 
+
     
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-26T13:57:03.640Z">2020-03-26</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 123 个字)
-                </span>
-                
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一页</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/26/4a17b156.html">Hello World</a>
-            
-        </h1>
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一页</a>
         </div>
-        
-        
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -657,7 +712,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -681,7 +736,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -794,7 +849,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Data-Analyze/" style="font-size: 10px;">Data Analyze</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/ReID/" style="font-size: 10px;">ReID</a> <a href="/tags/mmcv-toolkits/" style="font-size: 10px;">mmcv, toolkits</a> <a href="/tags/python-tools/" style="font-size: 10px;">python-tools</a>
+        <a href="/tags/Data-Analyze/" style="font-size: 10px;">Data Analyze</a> <a href="/tags/Introduction/" style="font-size: 10px;">Introduction</a> <a href="/tags/RANet-efficiency-of-DL/" style="font-size: 10px;">RANet, efficiency of DL</a> <a href="/tags/ReID/" style="font-size: 10px;">ReID</a> <a href="/tags/mmcv-toolkits/" style="font-size: 10px;">mmcv, toolkits</a> <a href="/tags/python-tools/" style="font-size: 10px;">python-tools</a>
     </div>
 </div>
     
@@ -809,16 +864,54 @@
         
         <article class="media">
             
+            <a href="/2020/04/27/5cb48b4c.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet-分辨率自适应网络">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time></div>
+                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet-分辨率自适应网络</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/21/eb1bbd37.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="算法竞赛经典入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-21T14:24:08.000Z">2020-04-21</time></div>
+                    <a href="/2020/04/21/eb1bbd37.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">算法竞赛经典入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/10/5e56603b.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ReID">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Beyond ResNet：行人ReID任务中的不同网络性能分析">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time></div>
-                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ReID</a>
+                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Beyond ResNet：行人ReID任务中的不同网络性能分析</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -864,44 +957,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/05/45a48a6c.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mmcv_image">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-05T12:32:46.000Z">2020-04-05</time></div>
-                    <a href="/2020/04/05/45a48a6c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">mmcv_image</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/05/9a9c4b13.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mmcv_intro">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-05T10:22:15.000Z">2020-04-05</time></div>
-                    <a href="/2020/04/05/9a9c4b13.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">mmcv_intro</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -919,7 +974,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -958,6 +1013,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Introduction/">
                         <span class="tag">Introduction</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RANet-efficiency-of-DL/">
+                        <span class="tag">RANet, efficiency of DL</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1007,16 +1069,54 @@
         
         <article class="media">
             
+            <a href="/2020/04/27/5cb48b4c.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="RANet-分辨率自适应网络">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time></div>
+                    <a href="/2020/04/27/5cb48b4c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">RANet-分辨率自适应网络</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/21/eb1bbd37.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="算法竞赛经典入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-21T14:24:08.000Z">2020-04-21</time></div>
+                    <a href="/2020/04/21/eb1bbd37.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">算法竞赛经典入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/10/5e56603b.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ReID">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Beyond ResNet：行人ReID任务中的不同网络性能分析">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-10T08:03:07.000Z">2020-04-10</time></div>
-                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ReID</a>
+                    <a href="/2020/04/10/5e56603b.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Beyond ResNet：行人ReID任务中的不同网络性能分析</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1062,44 +1162,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/05/45a48a6c.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mmcv_image">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-05T12:32:46.000Z">2020-04-05</time></div>
-                    <a href="/2020/04/05/45a48a6c.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">mmcv_image</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/05/9a9c4b13.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mmcv_intro">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-05T10:22:15.000Z">2020-04-05</time></div>
-                    <a href="/2020/04/05/9a9c4b13.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">mmcv_intro</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1117,7 +1179,7 @@
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -1156,6 +1218,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Introduction/">
                         <span class="tag">Introduction</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RANet-efficiency-of-DL/">
+                        <span class="tag">RANet, efficiency of DL</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

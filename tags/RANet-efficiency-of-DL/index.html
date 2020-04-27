@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: python-tools - Cydiachen的博客</title>
+<title>标签: RANet, efficiency of DL - Cydiachen的博客</title>
 
 
     <meta name="description" content="技术博客 深度学习、计算机视觉">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cydiachen的博客">
-<meta property="og:url" content="http://yoursite.com/tags/python-tools/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/RANet-efficiency-of-DL/index.html">
 <meta property="og:site_name" content="Cydiachen的博客">
 <meta property="og:description" content="技术博客 深度学习、计算机视觉">
 <meta property="og:locale" content="zh_CN">
@@ -135,7 +135,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">python-tools</a></li>
+            <li class="is-active"><a href="#" aria-current="page">RANet, efficiency of DL</a></li>
         </ul>
         </nav>
     </div>
@@ -148,13 +148,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-03T10:26:33.000Z">2020-04-03</time>
+                <time class="level-item has-text-grey" datetime="2020-04-27T01:43:30.000Z">2020-04-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 119 个字)
+                    3 分钟 读完 (大约 396 个字)
                 </span>
                 
                 
@@ -163,20 +163,14 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/04/03/4aba8923.html">ant-man</a>
+                <a class="has-link-black-ter" href="/2020/04/27/5cb48b4c.html">RANet-分辨率自适应网络</a>
             
         </h1>
         <div class="content">
-            <h1 id="视频工具包——Ant-Man-A-tool-for-video-processing-on-Python"><a href="#视频工具包——Ant-Man-A-tool-for-video-processing-on-Python" class="headerlink" title="视频工具包——Ant Man: A tool for video processing on Python"></a>视频工具包——Ant Man: A tool for video processing on Python</h1><h2 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h2><h2 id="2-开发进度表"><a href="#2-开发进度表" class="headerlink" title="2.开发进度表"></a>2.开发进度表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">title Ant Man: A tool for video processing on Python</span><br><span class="line">dateFormat 2020-04-03</span><br><span class="line">section 视频基本IO模块</span><br><span class="line">任务1 视频读取模块               :a1,2020-04-05, 5d</span><br><span class="line">任务2 视频输出模块               :a2, after a1 , 3d</span><br><span class="line">任务3 视频保存模块               :a3, after a2 , 3d</span><br><span class="line">任务4 视频缩放模块（插值实现）     :a4,after a3 , 3d</span><br><span class="line">任务5 视频抽帧模块               :a5,after a4 , 3d</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3-功能测试表"><a href="#3-功能测试表" class="headerlink" title="3. 功能测试表"></a>3. 功能测试表</h2><h2 id="4-requirements"><a href="#4-requirements" class="headerlink" title="4. requirements"></a>4. requirements</h2><ol>
-<li>mutliprocess;</li>
-<li>gc</li>
-<li>Opencv-python</li>
-<li>os</li>
-</ol>
+            <h1 id="RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020"><a href="#RANet-分辨率自适应网络，效果和性能的best-trade-off-CVPR-2020" class="headerlink" title="RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020"></a>RANet : 分辨率自适应网络，效果和性能的best trade-off | CVPR 2020</h1><p>​        这篇文章从分类的角度，提出了自适应网络RANet(Resolution Adaptive Network)的概念。这个网络包含了多个不同输入分辨率和深度的子网，根据样本难易程度自动使用不同计算量进行推理，并且子网之间的特征会进行融合，并且子网中的部分卷积核是共享参数的。通过试验结果可见：</p>
+<p>![image-20200427094820225](/Users/zhangyunchen/Library/Application Support/typora-user-images/image-20200427094820225.png)</p>
+<p>这个网络在计算力受限的情况下，能够实现较优模型。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>​        从EfficientNet这一系列的分支开始，在深度卷积网络落地的时候，计算量与性能的取舍一直是现阶段的一个研究重点。之前的网络直接从网络的宽度或者深度入手，尝试达到一个动态平衡。而这篇文章从另一个角度入手，尝试实现计算能力与网络性能的平衡。这篇文章关注于从不同分辨率、网络深度上，根据样本自身的难易程度调整适应网络。这类网络有一些贪心的思想，包含了多个不同输入分辨率和深度的子网路。网络先从最小的子网进行识别，当识别达到要求的条件，即结束，否则使用更大的子网进行识别。</p>
 
         </div>
         
